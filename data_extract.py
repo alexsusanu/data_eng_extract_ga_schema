@@ -60,8 +60,8 @@ def split_stream(src, v_out, h_out):
 
         for h in ses["hits"]:
             hit_ts = datetime.datetime.fromtimestamp(
-                ses["visitStartTime"] + h["time"]/1000.0, tz=timezone.utc
-            ).isoformat()
+            ses["visitStartTime"] + h["time"]/1000.0,
+            tz=timezone.utc).isoformat(timespec="milliseconds")
             page = h.get("page",{})
             h_out.write(j({
                 "full_visitor_id":  ses["fullVisitorId"],
